@@ -7,5 +7,6 @@ export default defineNuxtConfig({
     SPOTIFY_API_CODE: process.env.SPOTIFY_API_CODE,
     SPOTIFY_ACCESS_TOKEN: process.env.SPOTIFY_ACCESS_TOKEN,
     SPOTIFY_REFRESH_TOKEN: process.env.SPOTIFY_REFRESH_TOKEN,
+    SPOTIFY_TEMP_DATA: process.env.SPOTIFY_TEMP_DATA,
   },
 })

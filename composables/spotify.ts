@@ -31,3 +31,44 @@ export const getAccessToken = async () => {
 
   console.log(data);
 }
+
+export const getTopTracks = async () => {
+  const config = useRuntimeConfig();
+
+  return JSON.parse(config.SPOTIFY_TEMP_DATA);
+
+  const data = await $fetch(
+    'https://api.spotify.com/v1/me/top/tracks?time_range=short_term',
+    {
+      headers: {
+        Authorization: `Bearer ${config.SPOTIFY_ACCESS_TOKEN}`,
+      }
+    }
+  );
+
+  return data;
+}
+
+export const transformTopTracksData = (data: Object) => {
+  let transformedData: Array<Object> = [];
+
+  data.items.forEach(element => {
+    let track = {
+      id: element.id,
+      title: element.name,
+      author: element.artists.map((artist) => artist.name).join(", "),
+      image_url: element.album.images[2].url,
+      duration: millisToMinutesAndSeconds(element.duration_ms),
+      album_name: element.album.name
+    };
+    transformedData.push(track);
+  });
+
+  return transformedData;
+}
+
+function millisToMinutesAndSeconds(millis: number) {
+  var minutes: number = Math.floor(millis / 60000);
+  var seconds: number = parseInt(((millis % 60000) / 1000).toFixed(0));
+  return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+}
