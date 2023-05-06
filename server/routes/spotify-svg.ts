@@ -67,6 +67,10 @@ function getStyle() {
         left: 0;
     }
 
+    .br {
+        display: block;
+    }
+      
     .number-col {
         min-width: 35px;
         white-space: nowrap;
