@@ -3,7 +3,7 @@
     <div class="row">
       <div class="number-col small v-center"># {{ getNumber() }}</div>
       <div class="small">
-        <img height="40" width="40" :src="track.image_url" :alt="track.title" />
+        <img height="40" width="40" :src="track.image_b64" :alt="track.title" />
       </div>
       <div class="big songTitle">
         <span class="br">{{ track.title }}</span>

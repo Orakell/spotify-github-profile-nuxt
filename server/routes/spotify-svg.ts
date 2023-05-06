@@ -1,6 +1,8 @@
 import jsdom from "jsdom";
 
 export default defineEventHandler(async (event) => {
+  const height = 375;
+  const width = 510;
   let htmlContent: string = makeItXmlCompliant(await $fetch("/spotify"));
 
   const doc = new jsdom.JSDOM(htmlContent, { contentType: "text/xml" });
@@ -13,13 +15,13 @@ export default defineEventHandler(async (event) => {
   <svg 
       xmlns="http://www.w3.org/2000/svg" 
       xmlns:xlink="http://www.w3.org/1999/xlink" 
-      width="510" 
-      height="1185" 
+      width="${width}" 
+      height="${height}" 
       aria-labelledby="cardTitle" 
       role="img"
   >
       <title id="cardTitle">My last month's top tracks on Spotify</title>
-      <foreignObject width="510" height="1185">
+      <foreignObject width="${width}" height="${height}">
           <style>
               ${getStyle()}
           </style>
