@@ -1,12 +1,9 @@
 import jsdom from "jsdom";
 
 export default defineEventHandler(async (event) => {
-  const doc = new jsdom.JSDOM(await $fetch("/spotify"));
+  const doc = new jsdom.JSDOM(await $fetch("/spotify"), { parsingMode: "xml" });
 
   let content = doc.window.document.getElementById("top-tracks").outerHTML;
-
-  // todo: remove this later. dirty fix to avoid "tag mismatch" error with xml
-  content = content.replace('alt="spotify logo">', 'alt="spotify logo"/>');
 
   event.node.res.setHeader("Content-type", "image/svg+xml");
 
