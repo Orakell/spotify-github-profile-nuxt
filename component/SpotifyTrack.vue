@@ -6,7 +6,7 @@
         <img height="40" width="40" :src="track.image_url" :alt="track.title" />
       </div>
       <div class="big songTitle">
-        {{ track.title }} <br />
+        <span class="br">{{ track.title }}</span>
         <em>{{ track.author }}</em>
       </div>
       <div class="big v-center">{{ track.album_name }}</div>
@@ -28,6 +28,10 @@ export default {
 </script>
 
 <style>
+.br {
+  display: block;
+}
+
 .number-col {
   min-width: 35px;
   white-space: nowrap;
