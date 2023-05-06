@@ -1,8 +1,8 @@
 import jsdom from "jsdom";
 
 export default defineEventHandler(async (event) => {
-  const height = 375;
-  const width = 510;
+  const width = 648;
+  const height = 403;
   let htmlContent: string = makeItXmlCompliant(await $fetch("/spotify"));
 
   const doc = new jsdom.JSDOM(htmlContent, { contentType: "text/xml" });
