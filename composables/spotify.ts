@@ -1,4 +1,5 @@
 import base64 from "~/plugins/base64";
+import axios from "axios";
 
 export const generateCodeVerifier = (length: number) => {
   let text = "";
@@ -74,11 +75,15 @@ export const transformTopTracksData = async (data: Object) => {
 };
 
 async function getBase64Image(img) {
+  let image = await axios.get(img, { responseType: "arraybuffer" });
+  let returnedB64 = Buffer.from(image.data).toString("base64");
+
+  return "data:image/png;base64," + returnedB64;
+
   let blob: Blob = await $fetch(img);
 
   return (
-    "data:image/png;base64," +
-    Buffer.from(await blob.text()).toString("base64")
+    "data:image/png;base64," + Buffer.from(await blob.text()).toString("base64")
   );
 }
 
