@@ -1,7 +1,9 @@
 import jsdom from "jsdom";
 
 export default defineEventHandler(async (event) => {
-  const doc = new jsdom.JSDOM(await $fetch("/spotify"), { parsingMode: "xml" });
+  let htmlContent: string = makeItXmlCompliant(await $fetch("/spotify"));
+
+  const doc = new jsdom.JSDOM(htmlContent, { contentType: "text/xml" });
 
   let content = doc.window.document.getElementById("top-tracks").outerHTML;
 
@@ -28,6 +30,20 @@ export default defineEventHandler(async (event) => {
   </svg>
   `;
 });
+
+function makeItXmlCompliant(content: string) {
+  return content
+    .replace(/(?:\r\n|\r|\n)/g, "")
+    .replaceAll(/<head>.*<\/head>/gm, () => {
+      return "";
+    })
+    .replaceAll(/<script>.*<\/script>/gm, () => {
+      return "";
+    })
+    .replaceAll(/<img(.*?) .*?>/gm, (match: string) => {
+      return match.substring(0, match.length - 1) + `/>`;
+    });
+}
 
 function getStyle() {
   return `

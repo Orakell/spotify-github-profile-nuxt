@@ -3,9 +3,12 @@
     <div class="row">
       <div class="number-col small v-center"># {{ getNumber() }}</div>
       <div class="small">
-        <img height=40 width=40 :src="track.image_url" :alt="track.title">
+        <img height="40" width="40" :src="track.image_url" :alt="track.title" />
       </div>
-      <div class="big songTitle">{{ track.title }} <br> <em>{{ track.author }}</em></div>
+      <div class="big songTitle">
+        {{ track.title }} <br />
+        <em>{{ track.author }}</em>
+      </div>
       <div class="big v-center">{{ track.album_name }}</div>
       <div class="small v-center">{{ track.duration }}</div>
     </div>
@@ -15,13 +18,13 @@
 <script>
 export default {
   name: "SpotifyTrack",
-  props: ['track', 'number'],
+  props: ["track", "number"],
   methods: {
     getNumber() {
       return this.number + 1;
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style>
@@ -46,7 +49,7 @@ export default {
   flex-flow: row nowrap;
 }
 
-.row>* {
+.row > * {
   padding: 5px;
 }
 
