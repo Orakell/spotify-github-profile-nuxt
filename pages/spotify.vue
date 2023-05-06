@@ -1,20 +1,22 @@
 <template>
-  <foreignObject x="20" y="20" width="160" height="160">
-    <div xmlns="http://www.w3.org/1999/xhtml">
-      <div class="tracks-container">
-        <div class="title">
-          My last month's top tracks on <img src="~/assets/spotify-logo.png" alt="spotify logo" />
-        </div>
-        <SpotifyTrack v-for="(track, index) in topTracks" :track="track" :key="index" :number="index" />
-      </div>
+  <div id="top-tracks" class="tracks-container">
+    <div class="title">
+      My last month's top tracks on
+      <img src="~/assets/spotify-logo.png" alt="spotify logo" />
     </div>
-  </foreignObject>
+    <SpotifyTrack
+      v-for="(track, index) in topTracks"
+      :track="track"
+      :key="index"
+      :number="index"
+    />
+  </div>
 </template>
 
 <script setup>
-import SpotifyTrack from '~/component/SpotifyTrack.vue';
+import SpotifyTrack from "~/component/SpotifyTrack.vue";
 
-const { data: topTracks } = await useFetch('/api/getTopItems');
+const { data: topTracks } = await useFetch("/api/getTopItems");
 </script>
 
 <style>
