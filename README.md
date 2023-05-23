@@ -1,42 +1,15 @@
-# Nuxt 3 Minimal Starter
+# spotify-github-profile-nuxt
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Heavily inspired by [kittinan/spotify-github-profile](https://github.com/kittinan/spotify-github-profile).
 
-## Setup
+First contact with Nuxt.js and typescript. Second with Vue.js. And first time using Vercel to host all of this. So this is why nothing make sense.
 
-Make sure to install the dependencies:
+I was curious about how people were making things appear on their github profiles.
 
-```bash
-# yarn
-yarn install
+Since the big milestone of this project was outputing a svg on an URL call, I stored all the data and token from the Spotify API in the .env to speedup the process.
 
-# npm
-npm install
+I stopped working on it when I discovered all the requirements of the [Spotify Design Guidelines](https://developer.spotify.com/documentation/design).
 
-# pnpm
-pnpm install
-```
+How it looked on the github profile :
 
-## Development Server
-
-Start the development server on `http://localhost:3000`
-
-```bash
-npm run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+![image](https://github.com/Orakell/spotify-github-profile-nuxt/assets/36694523/61743346-1c99-44b6-a2ef-fee95dae95de)
